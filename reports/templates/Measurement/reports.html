@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="content">
+    <div class="">
+        <div class="page-header-title">
+            <h4 class="page-title">Last Ten Reports</h4>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="page-content-wrapper">
+        <div class="container">
+            <!-- Contenido de la página -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr style="color:#0E2EB0">
+                            <th>Report</th>
+                            <th>Patient</th>
+                            <th>Summary</th>
+                            <th>Image</th>
+                            <th>Date Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for report in report_list %}
+                        <tr>
+                            <td>{{ report.variable.name }}</td>
+                            <td>{{ report.patient_name }}</td>
+                            <td>{{ report.summary }}</td>
+                            <td>
+                                {% if report.image_url %}
+                                    <img src="{{ report.image_url }}" alt="Report Image" style="height:50px;">
+                                {% else %}
+                                    No image
+                                {% endif %}
+                            </td>
+                            <td>{{ report.dateTime }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div style="text-align:center;">
+                        <button type="button" class="btn btn-primary waves-effect waves-light"
+                                onClick=" window.location.href='/' ">
+                            Back
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

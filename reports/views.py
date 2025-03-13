@@ -12,7 +12,7 @@ def report_list(request):
     }
     return render(request, 'Report/reports.html', context)
 
-def variable_create(request):
+def report_create(request):
     if request.method == 'POST':
         form = ReportForm(request.POST)
         if form.is_valid():
